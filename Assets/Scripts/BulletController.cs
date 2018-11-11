@@ -15,9 +15,14 @@ public class BulletController : MonoBehaviour {
             case 1: GetComponent<Rigidbody>().AddForce(-1.0f * transform.up * bulletForce, ForceMode.Impulse); break;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
