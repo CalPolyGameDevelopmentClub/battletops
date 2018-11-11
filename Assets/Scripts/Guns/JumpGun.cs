@@ -24,7 +24,7 @@ public class JumpGun : AGun {
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+        rb = fireLoc.GetComponent<Rigidbody>();
 	}
 
     override
