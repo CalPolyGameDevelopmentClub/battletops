@@ -430,10 +430,11 @@ MonoBehaviour:
   - {fileID: 114074151400831792}
   - {fileID: 114754877019998164}
   - {fileID: 114004742286397902}
-  gunTrigger:
-  - Fire1
-  - Fire2
-  - Jump
+  gunTriggers:
+  - bumperL
+  - bumperR
+  - button0
+  playerNum: 1
 --- !u!135 &135643853975068772
 SphereCollider:
   m_ObjectHideFlags: 1

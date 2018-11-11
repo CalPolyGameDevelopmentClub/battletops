@@ -5,17 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public AGun[] guns;
-    public string[] gunTrigger;
+    public string[] gunTriggers;
+    public string playerNum = "1";
 
     // Use this for initialization
     void Start () {
-		
+        for (int t = 0; t < gunTriggers.Length; t++) {
+            gunTriggers[t] = playerNum + gunTriggers[t];
+        }
 	}
 
     private void FixedUpdate() {
         int trig = 0;
         foreach (AGun gun in guns) {
-            if (Input.GetAxis(gunTrigger[trig]) > 0.0f && gun.CanFire()) {
+            if (Input.GetAxis(gunTriggers[trig]) > 0.1f && gun.CanFire()) {
                 gun.Fire();
             }
             ++trig;
