@@ -8,6 +8,13 @@ public class PlayerController : MonoBehaviour {
     public string[] gunTriggers;
     public string playerNum = "1";
 
+    public GameObject forwardGunR;
+    public GameObject forwardGunL;
+    public GameObject jumpGun;
+
+    public GameObject gunSwitch;
+
+
     // Use this for initialization
     void Start () {
         for (int t = 0; t < gunTriggers.Length; t++) {
@@ -23,6 +30,11 @@ public class PlayerController : MonoBehaviour {
             }
             ++trig;
         }
+
+        if (Input.GetAxis("TFire1") > 0.0f) {
+            attachNewGuns(gunSwitch, AGun.Type.FORWARD);
+        }
+
     }
 
     // Update is called once per frame
@@ -30,5 +42,37 @@ public class PlayerController : MonoBehaviour {
 		foreach (AGun gun in guns) {
             gun.UpdateCD();
         }
+
+
 	}
+
+    private void attachNewGuns(GameObject prefab, AGun.Type type=AGun.Type.FORWARD) {
+        switch(type) {
+            case AGun.Type.FORWARD:
+                Destroy(guns[0].gameObject, 0.2f);
+                Destroy(guns[1].gameObject, 0.2f);
+
+                prefab.GetComponent<ForwardGun>().fireLoc = forwardGunL;
+                GameObject gunF = Instantiate(prefab, this.gameObject.transform);
+                guns[0] = gunF.GetComponent<AGun>();
+
+                prefab.GetComponent<ForwardGun>().fireLoc = forwardGunR;
+                gunF = Instantiate(prefab, this.gameObject.transform);
+                guns[1] = gunF.GetComponent<AGun>();
+
+                break;
+
+            case AGun.Type.JUMP:
+                Destroy(guns[2].gameObject, 0.2f);
+
+                prefab.GetComponent<JumpGun>().fireLoc = this.gameObject;
+                GameObject gunJ = Instantiate(prefab, this.gameObject.transform);
+                guns[2] = gunJ.GetComponent<AGun>();
+
+                break;
+
+            default: break;
+        }
+    }
+
 }
