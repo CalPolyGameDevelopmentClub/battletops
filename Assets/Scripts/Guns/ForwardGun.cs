@@ -36,7 +36,7 @@ public class ForwardGun : AGun {
 
     private void FireBullet()
     {
-        GameObject bullet = GameObject.Instantiate(
+        GameObject.Instantiate(
                 bulletPrefab,
                 fireLoc.transform.position - (fireLoc.transform.parent.forward * spawnDist),
                 fireLoc.transform.parent.rotation

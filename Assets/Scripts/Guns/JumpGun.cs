@@ -46,7 +46,7 @@ public class JumpGun : AGun {
 
     private void FireBullet()
     {
-        GameObject bullet = GameObject.Instantiate(
+        GameObject.Instantiate(
                 bulletPrefab,
                 fireLoc.transform.position - (fireLoc.transform.up * spawnDist),
                 fireLoc.transform.rotation
