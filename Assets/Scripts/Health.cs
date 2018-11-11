@@ -21,13 +21,8 @@ public class Health : MonoBehaviour {
 
     private void Death()
     {
-        //Respawn();
-
         currentLives--;
         currentHP = maxHP;
-
-        //Particles();
-
         if (currentLives <= 0) Destroy(gameObject);
     }
 }
