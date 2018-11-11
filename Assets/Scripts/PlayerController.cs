@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
             gun.UpdateCD();
         }
 
-        
+
 	}
 
     private void attachNewGuns(GameObject prefab, AGun.Type type=AGun.Type.FORWARD) {

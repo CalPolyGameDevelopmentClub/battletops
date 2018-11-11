@@ -24,7 +24,7 @@ public class JumpGun : AGun {
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+        rb = fireLoc.GetComponent<Rigidbody>();
 	}
 
     override
@@ -46,7 +46,7 @@ public class JumpGun : AGun {
 
     private void FireBullet()
     {
-        GameObject bullet = GameObject.Instantiate(
+        GameObject.Instantiate(
                 bulletPrefab,
                 fireLoc.transform.position - (fireLoc.transform.up * spawnDist),
                 fireLoc.transform.rotation
