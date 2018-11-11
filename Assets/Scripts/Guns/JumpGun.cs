@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : MonoBehaviour {
+public class JumpGun : AGun {
+
+    public GameObject fireLoc;
 
     public float jumpForce = 0.1f;
     public float coolDown = 1.0f;
@@ -17,7 +19,6 @@ public class Jump : MonoBehaviour {
     //bullet stuff
     public GameObject bulletPrefab;
     public float spawnDist;
-    public float bulletForce;
 
     private Rigidbody rb;
 
@@ -26,51 +27,46 @@ public class Jump : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 	}
 
-    //FixedUpdate for physics
-    void FixedUpdate()
-    {
-        //if player presses space, jump with shotgun
-        if (Input.GetAxis("Jump") > 0.0f && coolDown == coolTime)
-        {
-            JumpUp();
-            
-        }
-        if (hasFired && shotTime >= shotDelay)
-        {
+    override
+    public bool CanFire() {
+        return coolDown == coolTime;
+    }
+    override
+    public void Fire() {
+        JumpUp();
+    }
+    override
+    public void UpdateCD() {
+        Timers();
+
+        if (hasFired && shotTime >= shotDelay) {
             FireBullet();
         }
     }
 
-    public void FireBullet()
+    private void FireBullet()
     {
         GameObject bullet = GameObject.Instantiate(
                 bulletPrefab,
-                transform.position - (transform.up * spawnDist),
-                transform.rotation
+                fireLoc.transform.position - (fireLoc.transform.up * spawnDist),
+                fireLoc.transform.rotation
             );
-
-        bullet.GetComponent<Rigidbody>().AddForce(-1.0f * transform.up * bulletForce, ForceMode.Impulse);
-
+        
         hasFired = false;
     }
 
-    public void JumpUp()
+    private void JumpUp()
     {
         rb.AddRelativeForce(jumpDir * jumpForce, ForceMode.Impulse);
         coolTime = 0.0f;
         hasFired = true;
     }
 
-    public void Timers()
+    private void Timers()
     {
         coolTime = coolTime < coolDown ? coolTime + Time.deltaTime : coolDown;
-        airTime = transform.position.y > 0.5f ? airTime + Time.deltaTime : 0.0f;
+        airTime = fireLoc.transform.position.y > 0.5f ? airTime + Time.deltaTime : 0.0f;
         shotTime = hasFired ? shotTime + Time.deltaTime : 0.0f;
     }
 
-    // Update is called once per frame
-    void Update () {
-        //Keep time consitent
-        Timers();
-    }
 }
