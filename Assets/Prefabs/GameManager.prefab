@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4860298674762924}
   - component: {fileID: 114686057363519632}
+  - component: {fileID: 114286330035820416}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -361,6 +362,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331915430135436}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114286330035820416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876406762579922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d0e464f6dfb804e9bb24c767569e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 1780908369931330, guid: 0da7bc15ba1b30448930e9c1f2e17c7e, type: 2}
+  - {fileID: 1523045964650228, guid: d908e84c5631e8140b8c4576dd6250c9, type: 2}
+  spawnInterval: 10
+  spawnDistance: 7.5
+  spawnTime: 0
 --- !u!114 &114686057363519632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,4 +397,4 @@ MonoBehaviour:
   - {fileID: 1113293116385390}
   - {fileID: 1243600265589714}
   - {fileID: 1399950198174112}
-  startButton: button0
+  startButton: start

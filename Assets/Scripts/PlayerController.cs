@@ -41,10 +41,17 @@ public class PlayerController : MonoBehaviour {
     void Update () {
 		foreach (AGun gun in guns) {
             gun.UpdateCD();
-        }
-
-
+        } 
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "pickup")
+        {
+            PickupHolder ph = collision.gameObject.GetComponent<PickupHolder>();
+            attachNewGuns(ph.item, ph.type);
+        }
+    }
 
     private void attachNewGuns(GameObject prefab, AGun.Type type=AGun.Type.FORWARD) {
         switch(type) {
@@ -74,5 +81,4 @@ public class PlayerController : MonoBehaviour {
             default: break;
         }
     }
-
 }
