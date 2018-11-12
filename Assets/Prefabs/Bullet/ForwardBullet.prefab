@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 1
   behaviorSel: 0
+  randomness: 0
   dieOnImpact: 1
   damageAmount: 10
 --- !u!135 &135911920291939356

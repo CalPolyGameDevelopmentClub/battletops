@@ -6,42 +6,52 @@ public class JumpGun : AGun {
 
     public GameObject fireLoc;
 
-    public float jumpForce = 0.1f;
-    public float coolDown = 1.0f;
-    public Vector3 jumpDir = new Vector3(0.0f, 1.0f, 0.0f);
-    public float shotDelay = 0.05f;
+    public float initJumpForce = 0.5f;
 
-    private float coolTime = 1.0f;
-    private float airTime = 0.0f;
-    private float shotTime = 0.0f;
-    private bool hasFired = false;
+    public float jumpForce = 0.1f;
+    public float fireRate = 1.0f;
+    public Vector3 jumpDir = new Vector3(0.0f, 1.0f, 0.0f);
+
+    private float fireTime = 0.0f;
+    private bool inAir = false;
+
+    // Ammo
+    public int ammoMAX = 10;
+    public float notFiringCD = 5.0f;
+    public float reloadCD = 1.0f;
+    private int ammo;
+    private float notFiringTime = 0.0f;
+    private float reloadTime = 0.0f;
 
     //bullet stuff
     public GameObject bulletPrefab;
-    public float spawnDist;
+    public float spawnDist = 1f;
 
     private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
+        ammo = ammoMAX;
         rb = fireLoc.GetComponent<Rigidbody>();
 	}
 
     override
     public bool CanFire() {
-        return coolDown == coolTime;
+        return ammo > 0;
     }
     override
     public void Fire() {
-        JumpUp();
+        if (!inAir)
+            JumpUp();
+        else if (fireRate == fireTime) {           
+            FireBullet();           
+        }
     }
     override
     public void UpdateCD() {
+        inAir = fireLoc.transform.position.y > 1f;
         Timers();
-
-        if (hasFired && shotTime >= shotDelay) {
-            FireBullet();
-        }
+        UpdateAmmo();
     }
 
     private void FireBullet()
@@ -51,22 +61,32 @@ public class JumpGun : AGun {
                 fireLoc.transform.position - (fireLoc.transform.up * spawnDist),
                 fireLoc.transform.rotation
             );
-        
-        hasFired = false;
+        rb.AddRelativeForce(jumpDir * jumpForce, ForceMode.Impulse);
+
+        --ammo;
+        fireTime = 0.0f;
+        notFiringTime = 0.0f;
+        reloadTime = 0.0f;
     }
 
     private void JumpUp()
     {
-        rb.AddRelativeForce(jumpDir * jumpForce, ForceMode.Impulse);
-        coolTime = 0.0f;
-        hasFired = true;
+        rb.AddRelativeForce(jumpDir * initJumpForce, ForceMode.Impulse);
+        fireTime = 0.0f;        
+        
     }
 
     private void Timers()
     {
-        coolTime = coolTime < coolDown ? coolTime + Time.deltaTime : coolDown;
-        airTime = fireLoc.transform.position.y > 0.5f ? airTime + Time.deltaTime : 0.0f;
-        shotTime = hasFired ? shotTime + Time.deltaTime : 0.0f;
+        fireTime = fireTime < fireRate ? fireTime + Time.deltaTime : fireRate;
+        notFiringTime = notFiringTime < notFiringCD ? notFiringTime + Time.deltaTime : notFiringCD;
+        reloadTime = reloadTime < reloadCD ? reloadTime + Time.deltaTime : reloadCD;
     }
 
+    private void UpdateAmmo() {
+        if (reloadTime == reloadCD) {
+            ammo = ammo < ammoMAX ? ammo + 1 : ammoMAX;
+            reloadTime = 0.0f;
+        }
+    }
 }

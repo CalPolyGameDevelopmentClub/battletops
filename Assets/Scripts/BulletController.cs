@@ -6,16 +6,26 @@ public class BulletController : MonoBehaviour {
 
     public float bulletForce = 0;
     public int behaviorSel = 0;
+    public bool randomness = false;
     public bool dieOnImpact = false;
     public float damageAmount;
 
     // Use this for initialization
     void Start () {
-        switch(behaviorSel) {
-            case 0: default: GetComponent<Rigidbody>().AddForce(-1.0f * transform.forward * bulletForce, ForceMode.Impulse); break;
+        Vector3 bulletDir;
 
-            case 1: GetComponent<Rigidbody>().AddForce(-1.0f * transform.up * bulletForce, ForceMode.Impulse); break;
+        switch (behaviorSel) {
+            case 0: default: bulletDir = -1.0f * transform.forward; break;
+
+            case 1: bulletDir = -1.0f * transform.up; break;
         }
+
+        if (randomness) {
+            // TODO: !confused atm!
+            //this.transform.Rotate(Random.Range(-10, 10), 0 , Random.Range(-10, 10));
+        }
+        
+        GetComponent<Rigidbody>().AddForce(bulletDir * bulletForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireLoc: {fileID: 0}
-  jumpForce: 0.1
+  initJumpForce: 5
+  jumpForce: 1
   coolDown: 1
   jumpDir: {x: 0, y: 1, z: 0}
-  shotDelay: 0.05
   bulletPrefab: {fileID: 1174771670483096, guid: 43d015d31e51f5a409763e107a68dc71,
     type: 2}
   spawnDist: 0

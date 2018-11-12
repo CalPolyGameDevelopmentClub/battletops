@@ -585,10 +585,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireLoc: {fileID: 1223310871374142}
   fireForce: 0.75
-  coolDown: 0.05
+  fireRate: 0.1
   bulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}
   spawnDist: 1
+  ammoMAX: 10
+  notFiringCD: 5
+  reloadCD: 1
 --- !u!114 &114319011376074456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -601,13 +604,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireLoc: {fileID: 1875455655458338}
-  jumpForce: 0.1
-  coolDown: 1
+  initJumpForce: 0.75
+  jumpForce: 0.2
+  fireRate: 1
   jumpDir: {x: 0, y: 1, z: 0}
-  shotDelay: 0.05
+  ammoMAX: 10
+  notFiringCD: 5
+  reloadCD: 1
   bulletPrefab: {fileID: 1174771670483096, guid: 43d015d31e51f5a409763e107a68dc71,
     type: 2}
-  spawnDist: 0
+  spawnDist: 1
 --- !u!114 &114548430278258830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -623,6 +629,13 @@ MonoBehaviour:
   currentLives: 0
   maxHP: 100
   currentHP: 100
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  stock: []
+  flashSpeed: 5
+  flashCol: {r: 1, g: 0, b: 0, a: 0.1}
+  damageClip: {fileID: 0}
+  deathClip: {fileID: 0}
 --- !u!114 &114611043738350924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,10 +649,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireLoc: {fileID: 1099604483324910}
   fireForce: 0.75
-  coolDown: 0.05
+  fireRate: 0.1
   bulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}
   spawnDist: 1
+  ammoMAX: 10
+  notFiringCD: 5
+  reloadCD: 1
 --- !u!114 &114902502633214882
 MonoBehaviour:
   m_ObjectHideFlags: 1
