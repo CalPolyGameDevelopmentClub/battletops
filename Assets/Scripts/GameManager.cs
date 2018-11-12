@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour {
             players[playerNum].GetComponent<Health>().resetHP();
             players[playerNum].GetComponent<PlayerController>().reset();
             players[playerNum].SetActive(true);
+            summoned[playerNum] = true;
         }
         
     }

@@ -768,7 +768,7 @@ MonoBehaviour:
   currentLives: 3
   maxHP: 100
   currentHP: 5
-  startHP: 0
+  startHP: 5
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   stock:
