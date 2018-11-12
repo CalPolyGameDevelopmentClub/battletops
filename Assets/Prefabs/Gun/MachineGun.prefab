@@ -53,7 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireLoc: {fileID: 0}
   fireForce: 0.75
-  coolDown: 0.05
+  fireRate: 0.1
   bulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}
   spawnDist: 1
+  ammoMAX: 20
+  notFiringCD: 2
+  reloadCD: 0.01
