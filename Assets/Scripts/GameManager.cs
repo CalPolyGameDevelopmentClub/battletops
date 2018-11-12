@@ -7,14 +7,26 @@ public class GameManager : MonoBehaviour {
     public GameObject playerPrefab;
     public GameObject[] spawns;
     public string startButton;
+    public float spawnDelay;
 
+    private float[] respawnTime = new float[4];
     private bool[] summoned = { false, false, false, false };
+    private bool[] active = { false, false, false, false };
 
     //private GameObject[] players;
 
-	// Use this for initialization
-	void Start () {
-		
+    public void PlayerDeath(int playerNum)
+    {
+        summoned[playerNum - 1] = false;
+        respawnTime[playerNum - 1] = 0.0f;
+    }
+
+    // Use this for initialization
+    void Start () {
+        for (int i = 0; i < 4; i++)
+        {
+            respawnTime[i] = spawnDelay;
+        }
 	}
 	
 	// Update is called once per frame
@@ -22,12 +34,15 @@ public class GameManager : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            if (!summoned[i] && Input.GetButton((i + 1) + startButton))
+            if (!active[i] && Input.GetButton((i + 1) + startButton))
             {
+                active[i] = true;
                 summoned[i] = true;
-                SpawnPlayer(i + 1);
+                SpawnPlayer(i);
             }
-        }       
+        }
+
+        SpawnTimer();
 	}
 
     void SpawnPlayer(int playerNum)
@@ -38,9 +53,21 @@ public class GameManager : MonoBehaviour {
                 Quaternion.identity
             );
 
-        //players[playerNum - 1] = player;
+        summoned[playerNum] = true;
 
         PlayerController pc = player.GetComponent<PlayerController>();
-        pc.playerNum = "" + playerNum;
+        pc.playerNum = playerNum + 1;
+    }
+
+    void SpawnTimer()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            respawnTime[i] = respawnTime[i] <= spawnDelay ? respawnTime[i] + Time.deltaTime : spawnDelay;           
+            if (active[i] && !summoned[i] && respawnTime[i] == spawnDelay)
+            {
+                SpawnPlayer(i);
+            }
+        }
     }
 }
