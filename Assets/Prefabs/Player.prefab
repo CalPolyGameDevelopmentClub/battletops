@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875455655458338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -4.1043406, y: -5.3858565e-18, z: 0.4851148}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4488458626362572}
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25078a94e00cfdb47b8890811f472c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 56286d6793054164fb9860d92b57d60e, type: 2}
+  gun: {fileID: 11400000, guid: ca6a3b73bb3f3af4ba648c5ffeb6775e, type: 2}
   player: {fileID: 1875455655458338}
   isJumpGun: 1
 --- !u!114 &114489877992576808
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25078a94e00cfdb47b8890811f472c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 304c0cb463eba6e4281bb4456d43b968, type: 2}
+  gun: {fileID: 11400000, guid: ca6a3b73bb3f3af4ba648c5ffeb6775e, type: 2}
   player: {fileID: 1875455655458338}
   isJumpGun: 0
 --- !u!114 &114548430278258830
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25078a94e00cfdb47b8890811f472c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 56286d6793054164fb9860d92b57d60e, type: 2}
+  gun: {fileID: 11400000, guid: 304c0cb463eba6e4281bb4456d43b968, type: 2}
   player: {fileID: 1875455655458338}
   isJumpGun: 0
 --- !u!114 &114871411431149708
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25078a94e00cfdb47b8890811f472c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 56286d6793054164fb9860d92b57d60e, type: 2}
+  gun: {fileID: 11400000, guid: ca6a3b73bb3f3af4ba648c5ffeb6775e, type: 2}
   player: {fileID: 1875455655458338}
   isJumpGun: 0
 --- !u!114 &114872699113701808

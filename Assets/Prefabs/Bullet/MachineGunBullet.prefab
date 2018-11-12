@@ -9,38 +9,38 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1174771670483096}
+  m_RootGameObject: {fileID: 1790161092202828}
   m_IsPrefabAsset: 1
---- !u!1 &1174771670483096
+--- !u!1 &1790161092202828
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4008372876221928}
-  - component: {fileID: 33352437235524326}
-  - component: {fileID: 23778773305983200}
-  - component: {fileID: 54514671508072888}
-  - component: {fileID: 135911920291939356}
-  - component: {fileID: 114781827587942576}
-  - component: {fileID: 114348741945961408}
+  - component: {fileID: 4446435867704752}
+  - component: {fileID: 33220643051168620}
+  - component: {fileID: 23397493738634042}
+  - component: {fileID: 54339288919992410}
+  - component: {fileID: 135903940170696780}
+  - component: {fileID: 114989905712931252}
+  - component: {fileID: 114473803990940048}
   m_Layer: 2
-  m_Name: ForwardBullet
+  m_Name: MachineGunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1322317769800804
+--- !u!1 &1916102079164042
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4662249756726860}
-  - component: {fileID: 108065139035094674}
+  - component: {fileID: 4147151895796968}
+  - component: {fileID: 108278395953618312}
   m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
@@ -48,39 +48,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4008372876221928
+--- !u!4 &4147151895796968
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.65, y: 0.5, z: 0.5}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_Children:
-  - {fileID: 4662249756726860}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4662249756726860
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322317769800804}
+  m_GameObject: {fileID: 1916102079164042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 41, y: 2, z: 41}
   m_Children: []
-  m_Father: {fileID: 4008372876221928}
+  m_Father: {fileID: 4446435867704752}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23778773305983200
+--- !u!4 &4446435867704752
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790161092202828}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.65, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children:
+  - {fileID: 4147151895796968}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23397493738634042
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -110,19 +110,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33352437235524326
+--- !u!33 &33220643051168620
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54514671508072888
+--- !u!54 &54339288919992410
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   serializedVersion: 2
   m_Mass: 0.125
   m_Drag: 0
@@ -132,12 +132,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!108 &108065139035094674
+--- !u!108 &108278395953618312
 Light:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322317769800804}
+  m_GameObject: {fileID: 1916102079164042}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
@@ -169,24 +169,24 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114348741945961408
+--- !u!114 &114473803990940048
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ec47268f515204097c2fdbb6037184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 1.5
---- !u!114 &114781827587942576
+--- !u!114 &114989905712931252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f9ace0f6320d349a71bb70e373a22c, type: 3}
@@ -198,12 +198,12 @@ MonoBehaviour:
   dieOnImpact: 1
   damageAmount: 10
   shootDir: {x: 0, y: 0, z: 1}
---- !u!135 &135911920291939356
+--- !u!135 &135903940170696780
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174771670483096}
+  m_GameObject: {fileID: 1790161092202828}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

@@ -10,7 +10,7 @@ public class GunController : AGun {
 
     private Health pHealth;
     private int leeway = 5;
-    private static float SPWNDIS = 1.0f;
+    private static float SPWNDIS = 0.25f;
 
     private float fireTime;
     private float fireRate;
@@ -40,12 +40,11 @@ public class GunController : AGun {
     private void FireBullet() {
         Vector3 pos;
 
-        //if (isJumpGun)
-        //    pos = transform.position - (transform.up * SPWNDIS);
-        //else
-        pos = transform.position + (transform.forward * SPWNDIS);
-
-        GameObject.Instantiate(gun.BulletPrefab, pos, transform.rotation);
+        for (int i = 0; i < gun.bulletPos.Length; i++)
+        {
+            pos = (transform.rotation * gun.bulletPos[i]) + transform.position + (transform.forward * SPWNDIS);
+            GameObject.Instantiate(gun.BulletPrefab, pos, transform.rotation);
+        }
 
         //working
         if (isJumpGun)

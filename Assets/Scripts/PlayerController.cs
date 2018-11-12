@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     private AGun[] guns;
     private AGun jumpGun;
     private bool inAir = false;
-    private float baseY;
     private float initJumpForce = 1.0f;
 
     // Controls:
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour {
         holsterToReplace = 0;
 
         rb = GetComponent<Rigidbody>();
-        baseY = transform.position.y;
 	}
 
     private void FixedUpdate() {
