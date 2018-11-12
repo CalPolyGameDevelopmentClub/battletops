@@ -17,93 +17,102 @@
  // Discussion/Source:    http://forum.unity3d.com/threads/11112-Splitting-a-Mesh
  //
  /////////////////////////*/
- 
- //DestructibleObject - provides functionality to destroy whatever GameObject the script is attached to
- //the attached object must have a MeshFilter in its children, and its shrapnel objects must have a renderer in the root.
- //by Eli
-  
- using UnityEngine;
- using System.Collections;
-  
- public class DestructibleObject : MonoBehaviour
- {
-     public GameObject shrapnelPrefab;
-     //public AudioClip breakSound;
-     public float lifespan = 10.0f;
-     public float fadeTime = 0.5f;
-    
-     protected bool destroyed = false;
-     protected float lifetime;
-     protected GameObject[] pieces;
-    
-     public virtual void Update()
-     {
-         if (destroyed)
-         {
-             lifetime -= Time.deltaTime;
-            
-             //out of time, destroy this object
-             if (lifetime <= 0.0f)
-             {
-                 Object.Destroy(gameObject);
-             }
-             //fade out before destroying
-             else if (lifetime <= fadeTime)
-             {
-                 for (int i = 0; i < pieces.Length; i++)
-                 {
+
+//DestructibleObject - provides functionality to destroy whatever GameObject the script is attached to
+//the attached object must have a MeshFilter in its children, and its shrapnel objects must have a renderer in the root.
+//by Eli
+
+using UnityEngine;
+using System.Collections;
+
+public class Shatter : MonoBehaviour
+{
+    public GameObject shrapnelPrefab;
+    //public AudioClip breakSound;
+    public float lifespan = 10.0f;
+    public float fadeTime = 0.5f;
+
+    protected bool destroyed = false;
+    protected float lifetime;
+    protected GameObject[] pieces;
+
+    public virtual void Update()
+    {
+        if (destroyed)
+        {
+            lifetime -= Time.deltaTime;
+
+            //out of time, destroy this object
+            if (lifetime <= 0.0f)
+            {
+                Object.Destroy(gameObject);
+            }
+            //fade out before destroying
+            else if (lifetime <= fadeTime)
+            {
+                for (int i = 0; i < pieces.Length; i++)
+                {
                     Renderer r = pieces[i].GetComponent<Renderer>();
-                     Color c = r.material.color;
-                     c.a = 1.0f - ((fadeTime - lifetime) / fadeTime);
-                     r.material.color = c;
-                 }
-             }
-         }
-     }
-    
-     public virtual void Explode()
-     {
-         if (destroyed)
-         {
-             return;
-         }
-         destroyed = true;
-         lifetime = lifespan + fadeTime;
-        
-         //construct all the individual destructible pieces from our mesh
-         MeshFilter filter = GetComponentInChildren(typeof(MeshFilter)) as MeshFilter;
-         Mesh mesh = filter.mesh;
-         pieces = new GameObject[mesh.triangles.Length/3];
-         //a sneaky easy way to get the children to be sized correctly is to have a unit scale when spawning them, then restore it later
-         Vector3 oldScale = transform.localScale;
-         transform.localScale = new Vector3(1,1,1);
+                    Color c = r.material.color;
+                    c.a = 1.0f - ((fadeTime - lifetime) / fadeTime);
+                    r.material.color = c;
+                }
+            }
+        }
+
+        if (Input.GetButtonDown("S"))
+        {
+            print("SPACE DOWN\n");
+            Explode();
+        }
+    }
+
+    public virtual void Explode()
+    {
+        if (destroyed)
+        {
+            return;
+        }
+        destroyed = true;
+        lifetime = lifespan + fadeTime;
+
+        //construct all the individual destructible pieces from our mesh
+        MeshFilter filter = GetComponentInChildren(typeof(MeshFilter)) as MeshFilter;
+        Mesh mesh = filter.mesh;
+        pieces = new GameObject[mesh.triangles.Length / 3];
+        //a sneaky easy way to get the children to be sized correctly is to have a unit scale when spawning them, then restore it later
+        Vector3 oldScale = transform.localScale;
+        transform.localScale = new Vector3(1, 1, 1);
 
         Collider collider = GetComponent<Collider>();
 
-        for (int i = 0; i < mesh.triangles.Length; i+=3)
-         {   
-             GameObject go = GameObject.Instantiate(shrapnelPrefab) as GameObject;
-             Mesh newMesh = (go.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
-             newMesh.vertices    = new Vector3[]
-             {
+        for (int i = 0; i < mesh.triangles.Length; i += 3)
+        {
+            GameObject go = GameObject.Instantiate(shrapnelPrefab) as GameObject;
+            Mesh newMesh = (go.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
+
+            newMesh.Clear(false);
+
+            newMesh.vertices = new Vector3[]
+            {
                  mesh.vertices[mesh.triangles[i+0]],
                  mesh.vertices[mesh.triangles[i+1]],
                  mesh.vertices[mesh.triangles[i+2]],
                  mesh.vertices[mesh.triangles[i+0]] - mesh.normals[mesh.triangles[i+0]] * 0.15f, //need to turn this plane 3D
                  mesh.vertices[mesh.triangles[i+1]] - mesh.normals[mesh.triangles[i+1]] * 0.15f,
                  mesh.vertices[mesh.triangles[i+2]] - mesh.normals[mesh.triangles[i+2]] * 0.15f
-             };
-             newMesh.uv          = new Vector2[]
-             {
+            };
+            newMesh.uv = new Vector2[]
+            {
                  mesh.uv[mesh.triangles[i+0]],
                  mesh.uv[mesh.triangles[i+1]],
                  mesh.uv[mesh.triangles[i+2]],
                  mesh.uv[mesh.triangles[i+0]],
                  mesh.uv[mesh.triangles[i+1]],
                  mesh.uv[mesh.triangles[i+2]]
-             };
-             newMesh.triangles   = new int[]
-             {
+            };
+            newMesh.triangles = new int[]
+            {
                  0, 2, 3,
                  2, 5, 3,
                  0, 3, 1,
@@ -112,26 +121,26 @@
                  2, 4, 5,
                  2, 0, 1,
                  5, 4, 3
-             };
-             newMesh.RecalculateNormals();
+            };
+            newMesh.RecalculateNormals();
             Collider gcol = go.GetComponent<Collider>();
-             (gcol as MeshCollider).sharedMesh = newMesh;
-             go.transform.parent = filter.transform;
-             go.transform.localPosition = Vector3.zero;
-             go.transform.localRotation = Quaternion.identity;
-             pieces[i/3] = go;
-         }
-         mesh.triangles = new int[0];
-         mesh.vertices = new Vector3[0];
-         mesh.uv = new Vector2[0];
-         mesh.normals = new Vector3[0];
-         transform.localScale = oldScale;
-         Object.Destroy(collider);
-         //audio.PlayOneShot(breakSound);
-     }
-    
-     public GameObject[] GetPieces()
-     {
-         return pieces;
-     }
- }
+            (gcol as MeshCollider).sharedMesh = newMesh;
+            go.transform.parent = filter.transform;
+            go.transform.localPosition = Vector3.zero;
+            go.transform.localRotation = Quaternion.identity;
+            pieces[i / 3] = go;
+        }
+        mesh.triangles = new int[0];
+        mesh.vertices = new Vector3[0];
+        mesh.uv = new Vector2[0];
+        mesh.normals = new Vector3[0];
+        transform.localScale = oldScale;
+        Object.Destroy(collider);
+        //audio.PlayOneShot(breakSound);
+    }
+
+    public GameObject[] GetPieces()
+    {
+        return pieces;
+    }
+}
