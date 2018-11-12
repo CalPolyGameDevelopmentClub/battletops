@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23270542279336192}
   - component: {fileID: 114952954549981666}
   - component: {fileID: 54043966136507588}
-  - component: {fileID: 136934906104943756}
+  - component: {fileID: 65995887288037716}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: pickup
@@ -115,7 +115,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780908369931330}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54043966136507588
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -131,6 +131,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65995887288037716
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780908369931330}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108076325963460072
 Light:
   m_ObjectHideFlags: 1
@@ -179,18 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e4c3a2a471e4844a9232e69ba876d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1802793122578388, guid: e79c33434929bc9479702187d5e3320e, type: 2}
+  item: {fileID: 11400000, guid: 304c0cb463eba6e4281bb4456d43b968, type: 2}
   type: 0
---- !u!136 &136934906104943756
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1780908369931330}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

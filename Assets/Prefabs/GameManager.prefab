@@ -376,7 +376,8 @@ MonoBehaviour:
   pickups:
   - {fileID: 1780908369931330, guid: 0da7bc15ba1b30448930e9c1f2e17c7e, type: 2}
   - {fileID: 1523045964650228, guid: d908e84c5631e8140b8c4576dd6250c9, type: 2}
-  spawnInterval: 30
+  - {fileID: 1934349517228138, guid: cc9584adf08294242ad0f20286268b0b, type: 2}
+  spawnInterval: 5
   spawnDistance: 7.5
   spawnTime: 3
 --- !u!114 &114686057363519632

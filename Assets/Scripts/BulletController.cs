@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour {
 
         if (randomness) {
             // TODO: !confused atm!
-            //this.transform.Rotate(Random.Range(-10, 10), 0 , Random.Range(-10, 10));
+            this.transform.Rotate(Random.Range(-10, 10), 0 , Random.Range(-10, 10));
         }
         
         GetComponent<Rigidbody>().AddRelativeForce(shootDir * bulletForce, ForceMode.Impulse);

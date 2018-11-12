@@ -26,21 +26,21 @@ GameObject:
   - component: {fileID: 114781827587942576}
   - component: {fileID: 114348741945961408}
   m_Layer: 2
-  m_Name: JumpBullet
+  m_Name: BasicBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1604696029108738
+--- !u!1 &1322317769800804
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4772386365123338}
-  - component: {fileID: 108371805015674234}
+  - component: {fileID: 4662249756726860}
+  - component: {fileID: 108065139035094674}
   m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
@@ -58,16 +58,16 @@ Transform:
   m_LocalPosition: {x: -0.65, y: 0.5, z: 0.5}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
-  - {fileID: 4772386365123338}
+  - {fileID: 4662249756726860}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4772386365123338
+--- !u!4 &4662249756726860
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1604696029108738}
+  m_GameObject: {fileID: 1322317769800804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 41, y: 2, z: 41}
@@ -132,12 +132,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!108 &108371805015674234
+--- !u!108 &108065139035094674
 Light:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1604696029108738}
+  m_GameObject: {fileID: 1322317769800804}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ec47268f515204097c2fdbb6037184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 2.5
+  lifespan: 0.25
 --- !u!114 &114781827587942576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f9ace0f6320d349a71bb70e373a22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 2
-  behaviorSel: 1
+  bulletForce: 1.5
+  behaviorSel: 0
   randomness: 0
   dieOnImpact: 1
   damageAmount: 10
@@ -208,5 +208,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

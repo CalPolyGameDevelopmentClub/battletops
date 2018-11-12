@@ -9,14 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 079b07d633b30e644b9d895f8e926ac4, type: 3}
-  m_Name: MachineGun
+  m_Name: Line
   m_EditorClassIdentifier: 
-  objectName: MachineGun
-  FireRate: 0.1
+  objectName: New ScriptableGun
+  FireRate: 0.75
   Cost: 0
-  Jumpforce: 0.5
+  Jumpforce: 2.5
   JumpforceType: 1
   bulletPos:
+  - {x: 0.66, y: 0, z: 0}
+  - {x: 0.33, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  BulletPrefab: {fileID: 1790161092202828, guid: 21c9386afd199764084880243153edd7,
+  - {x: -0.33, y: 0, z: 0}
+  - {x: -0.66, y: 0, z: 0}
+  BulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114890276505174256}
   - component: {fileID: 54745610180151630}
   m_Layer: 0
-  m_Name: Punch
+  m_Name: Line
   m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e4c3a2a471e4844a9232e69ba876d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1802793122578388, guid: ba50c357b550c604e838fe7f749a7b98, type: 2}
+  item: {fileID: 11400000, guid: ca6a3b73bb3f3af4ba648c5ffeb6775e, type: 2}
   type: 0

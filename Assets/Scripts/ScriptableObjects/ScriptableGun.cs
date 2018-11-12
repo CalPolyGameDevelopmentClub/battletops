@@ -9,6 +9,8 @@ public class ScriptableGun : ScriptableObject {
     public float Cost = 0.0f;
     public float Jumpforce;
     public ForceMode JumpforceType = ForceMode.Impulse;
+    public Vector3[] bulletDir;
+    public Vector3[] bulletPos;
     public GameObject BulletPrefab;
 
     //public Vector3[] spawnDirs;
