@@ -16,6 +16,7 @@ public class Health : MonoBehaviour {
     public Slider healthSlider;
     public Image damageImage;
     public Image[] stock; // 3 lives for now
+    public ParticleSystem deathParticle;
     public float flashSpeed = 5f;
     public Color flashCol = new Color(1f, 0f, 0f, 0.1f); // Match to player color
 
@@ -72,7 +73,9 @@ public class Health : MonoBehaviour {
         this.gameObject.SetActive(false);
         
         playerAudio.PlayOneShot(deathClip);
-        //Particles();
+        //Particles
+        if (deathParticle != null)
+            deathParticle.Emit(1);
 
         NotifyGM();
 

@@ -58,17 +58,19 @@ public class GameManager : MonoBehaviour {
             );
 
             summoned[playerNum] = true;
+            players[playerNum] = player;
 
             PlayerController pc = player.GetComponent<PlayerController>();
             pc.playerNum = playerNum + 1;
 
             RPMprefab.GetComponent<UIHealthRPMManager>().player = player;
             GameObject playerRPM = Instantiate(RPMprefab, UISpawns[playerNum].transform.position, Quaternion.identity);
-            playerRPM.transform.parent = UISpawns[playerNum].transform;
+            playerRPM.transform.SetParent(UISpawns[playerNum].transform);
         }
         else {
             players[playerNum].transform.position = spawns[playerNum].transform.position;
             players[playerNum].GetComponent<Health>().resetHP();
+            players[playerNum].GetComponent<PlayerController>().reset();
             players[playerNum].SetActive(true);
         }
         

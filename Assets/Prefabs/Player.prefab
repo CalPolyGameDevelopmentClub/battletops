@@ -678,6 +678,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  deathParticle: {fileID: 0}
   flashSpeed: 5
   flashCol: {r: 1, g: 0, b: 0, a: 0.1}
   damageClip: {fileID: 0}
