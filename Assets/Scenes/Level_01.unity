@@ -2295,10 +2295,26 @@ Prefab:
       propertyPath: UISpawns.Array.data[3]
       value: 
       objectReference: {fileID: 436071629}
-    - target: {fileID: 114286330035820416, guid: d6a5638828b7a274393ac7f3b4ff4e78,
+    - target: {fileID: 114686057363519632, guid: d6a5638828b7a274393ac7f3b4ff4e78,
         type: 2}
-      propertyPath: spawnDistance
-      value: 15
+      propertyPath: launchForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863533847194252, guid: d6a5638828b7a274393ac7f3b4ff4e78, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695034788358556, guid: d6a5638828b7a274393ac7f3b4ff4e78, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479447326191344, guid: d6a5638828b7a274393ac7f3b4ff4e78, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813202871201430, guid: d6a5638828b7a274393ac7f3b4ff4e78, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a5638828b7a274393ac7f3b4ff4e78, type: 2}

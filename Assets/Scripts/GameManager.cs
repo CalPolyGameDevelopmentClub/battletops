@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] spawns;
     public string startButton;
     public float spawnDelay;
+    public float launchForce;
 
     private float[] respawnTime = new float[4];
     private GameObject[] players = {null, null, null, null};
@@ -66,6 +67,8 @@ public class GameManager : MonoBehaviour {
             RPMprefab.GetComponent<UIHealthRPMManager>().player = player;
             GameObject playerRPM = Instantiate(RPMprefab, UISpawns[playerNum].transform.position, Quaternion.identity);
             playerRPM.transform.SetParent(UISpawns[playerNum].transform);
+
+            LaunchPlayer(players[playerNum], spawns[playerNum]);
         }
         else {
             players[playerNum].transform.position = spawns[playerNum].transform.position;
@@ -75,6 +78,11 @@ public class GameManager : MonoBehaviour {
             summoned[playerNum] = true;
         }
         
+    }
+
+    void LaunchPlayer(GameObject player, GameObject spawn)
+    {
+        player.GetComponent<Rigidbody>().AddRelativeForce(spawn.transform.forward * launchForce, ForceMode.Impulse);
     }
 
     void SpawnTimer()
