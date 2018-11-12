@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135911920291939356}
   - component: {fileID: 114781827587942576}
   - component: {fileID: 114348741945961408}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: JumpBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772386365123338}
   - component: {fileID: 108371805015674234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,7 @@ MonoBehaviour:
   randomness: 0
   dieOnImpact: 1
   damageAmount: 10
+  shootDir: {x: 0, y: 0, z: 1}
 --- !u!135 &135911920291939356
 SphereCollider:
   m_ObjectHideFlags: 1

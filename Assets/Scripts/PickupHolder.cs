@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PickupHolder : MonoBehaviour {
 
-    public GameObject item;
-    public AGun.Type type;
+    public ScriptableGun item;
+    public int type = 0;
 
     private void OnCollisionEnter(Collision collision)
     {
