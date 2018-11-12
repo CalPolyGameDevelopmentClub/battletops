@@ -11,6 +11,7 @@ public class Health : MonoBehaviour {
     public int currentLives;
     public float maxHP;
     public float currentHP;
+    private float startHP;
 
     public Slider healthSlider;
     public Image damageImage;
@@ -35,6 +36,7 @@ public class Health : MonoBehaviour {
         {
             stock[i].enabled = true;
         }
+        startHP = currentHP;
     }
 
     private void Update()
@@ -52,23 +54,29 @@ public class Health : MonoBehaviour {
 
     public void Damage(float damage)
     {
-        currentHP = Mathf.Clamp(currentHP - damage, 0.0f, maxHP);
+        if (currentHP < damage) {
+            currentHP = 0;
+        }
+        else {
+            currentHP = Mathf.Clamp(currentHP - damage, 0.0f, maxHP);
+        }        
+    }
+
+    public void resetHP() {
+        currentHP = startHP;
     }
 
     private void Death()
     {
-        //Respawn();
-
-        currentLives--;
-        currentHP = maxHP;
-
-        if (currentLives > maxLives) { stock[maxLives - currentLives].enabled = false; }
+        //currentLives--;
+        this.gameObject.SetActive(false);
+        
         playerAudio.PlayOneShot(deathClip);
         //Particles();
 
         NotifyGM();
 
-        if (currentLives <= 0) Destroy(gameObject);
+        //if (currentLives <= 0) Destroy(gameObject);
     }
 
     private void NotifyGM()

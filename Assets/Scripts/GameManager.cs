@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public GameObject playerPrefab;
+    public GameObject RPMprefab;
+    public GameObject[] UISpawns;
     public GameObject[] spawns;
     public string startButton;
     public float spawnDelay;
 
     private float[] respawnTime = new float[4];
+    private GameObject[] players = {null, null, null, null};
     private bool[] summoned = { false, false, false, false };
     private bool[] active = { false, false, false, false };
 
@@ -47,16 +50,28 @@ public class GameManager : MonoBehaviour {
 
     void SpawnPlayer(int playerNum)
     {
-        GameObject player = GameObject.Instantiate(
+        if (players[playerNum] == null) {
+            GameObject player = GameObject.Instantiate(
                 playerPrefab,
                 spawns[playerNum].transform.position,
                 Quaternion.identity
             );
 
-        summoned[playerNum] = true;
+            summoned[playerNum] = true;
 
-        PlayerController pc = player.GetComponent<PlayerController>();
-        pc.playerNum = playerNum + 1;
+            PlayerController pc = player.GetComponent<PlayerController>();
+            pc.playerNum = playerNum + 1;
+
+            RPMprefab.GetComponent<UIHealthRPMManager>().player = player;
+            GameObject playerRPM = Instantiate(RPMprefab, UISpawns[playerNum].transform.position, Quaternion.identity);
+            playerRPM.transform.parent = UISpawns[playerNum].transform;
+        }
+        else {
+            players[playerNum].transform.position = spawns[playerNum].transform.position;
+            players[playerNum].GetComponent<Health>().resetHP();
+            players[playerNum].SetActive(true);
+        }
+        
     }
 
     void SpawnTimer()

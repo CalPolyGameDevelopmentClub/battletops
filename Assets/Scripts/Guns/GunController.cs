@@ -41,7 +41,7 @@ public class GunController : AGun {
 
         for (int i = 0; i < gun.bulletPos.Length; i++)
         {
-            dir = transform.rotation * Quaternion.Euler(gun.bulletDir[i % gun.bulletDir.Length]);
+            dir = transform.rotation * Quaternion.Euler(gun.bulletDir[i]);
             pos = (transform.rotation * gun.bulletPos[i]) + transform.position + (transform.forward * SPWNDIS);
             GameObject.Instantiate(gun.BulletPrefab, pos, dir);
         }

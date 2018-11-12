@@ -16,6 +16,12 @@ MonoBehaviour:
   Cost: 0
   Jumpforce: 2.5
   JumpforceType: 1
+  bulletDir:
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
   bulletPos:
   - {x: 0.66, y: 0, z: 0}
   - {x: 0.33, y: 0, z: 0}

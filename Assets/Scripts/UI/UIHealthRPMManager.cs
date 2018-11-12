@@ -16,7 +16,7 @@ public class UIHealthRPMManager : MonoBehaviour {
         rpmMeter.GetComponent<UIHealthRPM>().player = player;
         rpmMeter.GetComponent<UIHealthRPM>().randomScale = randomScale;
         while (bar < bars) {
-            
+            rpmMeter.GetComponent<UIHealthRPM>().band = bar * 2;
             GameObject rpmM = Instantiate(rpmMeter, this.transform);
             rpmM.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, 1);
             rpmM.transform.parent = this.transform;

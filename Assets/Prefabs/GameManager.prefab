@@ -393,6 +393,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1875455655458338, guid: 232542a072eba9f47b70aa88c24f50c9,
     type: 2}
+  RPMprefab: {fileID: 1557726421305092, guid: 4ee2a7e43c94d544881136e6b14ceee7, type: 2}
+  UISpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawns:
   - {fileID: 1331915430135436}
   - {fileID: 1113293116385390}

@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Update movement
-        maxMag = Mathf.Sqrt(player.GetComponent<Health>().currentHP / 10.0f) + 1.5f;
+        maxMag = Mathf.Sqrt(player.GetComponent<Health>().currentHP / 7.0f) + 1.5f;
 
         Debug.Log("test: " + maxMag);
 

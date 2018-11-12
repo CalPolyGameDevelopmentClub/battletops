@@ -8,6 +8,7 @@ public class UIHealthRPM : MonoBehaviour {
     public GameObject player;
     private Health pHealth;
     public Color color;
+    public int band;
     private float curH;
     public float randomScale = 0.1f;
     private float randMin, randMax;
@@ -38,6 +39,6 @@ public class UIHealthRPM : MonoBehaviour {
     void Update () {
         curH = pHealth.currentHP;
         float fill = 0.5f * curH / pHealth.maxHP;
-        _meter.fillAmount = fill + randomness;
+        _meter.fillAmount = fill + randomness + AudioPeer._samples[band] * 0.1f;
 	}
 }
