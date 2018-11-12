@@ -14,7 +14,7 @@ MonoBehaviour:
   objectName: BladeGun
   FireRate: 0.05
   Cost: 0
-  Jumpforce: 0.5
+  Jumpforce: 1
   JumpforceType: 0
   bulletDir:
   - {x: 0, y: 0, z: 1}
