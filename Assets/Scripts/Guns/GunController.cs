@@ -10,7 +10,7 @@ public class GunController : AGun {
 
     private Health pHealth;
     private int leeway = 5;
-    private static float SPWNDIS = 0.25f;
+    private static float SPWNDIS = 0.5f;
 
     private float fireTime;
 
@@ -43,7 +43,14 @@ public class GunController : AGun {
         {
             dir = transform.rotation * Quaternion.Euler(gun.bulletDir[i]);
             pos = (transform.rotation * gun.bulletPos[i]) + transform.position + (transform.forward * SPWNDIS);
-            GameObject.Instantiate(gun.BulletPrefab, pos, dir);
+            GameObject bullet = GameObject.Instantiate(gun.BulletPrefab, pos, dir);
+            MeshRenderer bm = bullet.GetComponent<MeshRenderer>();
+            bm.material.color = gun.color;
+
+            bullet.GetComponentInChildren<Light>().color = gun.color;
+
+            //bm.material.shader = Shader.Find("_Color");
+            //bm.material.SetColor("_Color", gun.color);
         }
 
         //working

@@ -9,25 +9,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 079b07d633b30e644b9d895f8e926ac4, type: 3}
-  m_Name: Line
+  m_Name: BladeGun
   m_EditorClassIdentifier: 
-  objectName: New ScriptableGun
-  FireRate: 0.75
+  objectName: BladeGun
+  FireRate: 0.05
   Cost: 0
-  Jumpforce: 2.5
-  JumpforceType: 1
+  Jumpforce: 0.5
+  JumpforceType: 0
   bulletDir:
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
   bulletPos:
-  - {x: 0.66, y: 0, z: 0}
-  - {x: 0.33, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: -0.33, y: 0, z: 0}
-  - {x: -0.66, y: 0, z: 0}
-  color: {r: 1, g: 1, b: 0, a: 1}
-  BulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
+  - {x: 0, y: 0, z: 0.3}
+  - {x: 0, y: 0, z: 0.6}
+  - {x: 0, y: 0, z: 0.9}
+  color: {r: 0, g: 1, b: 0, a: 0}
+  BulletPrefab: {fileID: 1388671928843876, guid: 5db2c6cac364bb1478e892d5bb3d2bcb,
     type: 2}

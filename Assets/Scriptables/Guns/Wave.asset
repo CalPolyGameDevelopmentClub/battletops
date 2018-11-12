@@ -28,5 +28,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: -0.33, y: 0, z: 0}
   - {x: -0.66, y: 0, z: 0}
+  color: {r: 1, g: 0, b: 1, a: 1}
   BulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}

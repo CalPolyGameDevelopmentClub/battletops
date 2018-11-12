@@ -11,6 +11,7 @@ public class ScriptableGun : ScriptableObject {
     public ForceMode JumpforceType = ForceMode.Impulse;
     public Vector3[] bulletDir;
     public Vector3[] bulletPos;
+    public Color color;
     public GameObject BulletPrefab;
 
     //public Vector3[] spawnDirs;
