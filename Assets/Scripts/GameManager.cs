@@ -35,7 +35,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        int j = 1;
+        foreach (string name in Input.GetJoystickNames())
+        {
+            Debug.Log(j + ": " + name);
+            j++;
+        }
         for (int i = 0; i < 4; i++)
         {
             if (!active[i] && Input.GetButton((i + 1) + startButton))
