@@ -9,23 +9,18 @@ public class BulletController : MonoBehaviour {
     public bool randomness = false;
     public bool dieOnImpact = false;
     public float damageAmount;
+    public Vector3 shootDir = new Vector3(0f, 0f, 1f);
 
     // Use this for initialization
     void Start () {
-        Vector3 bulletDir;
-
-        switch (behaviorSel) {
-            case 0: default: bulletDir = -1.0f * transform.forward; break;
-
-            case 1: bulletDir = -1.0f * transform.up; break;
-        }
+        
 
         if (randomness) {
             // TODO: !confused atm!
             //this.transform.Rotate(Random.Range(-10, 10), 0 , Random.Range(-10, 10));
         }
         
-        GetComponent<Rigidbody>().AddForce(bulletDir * bulletForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddRelativeForce(shootDir * bulletForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,9 +41,4 @@ public class BulletController : MonoBehaviour {
             otherHP.Damage(damageAmount);
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

@@ -24,7 +24,7 @@ public class Health : MonoBehaviour {
     private void Awake()
     {
         playerAudio = GetComponent<AudioSource>();
-        currentHP = maxHP;
+        //currentHP = maxHP;
 
         GameObject go = GameObject.Find("HUDCanvas");
         if (!go)
@@ -52,7 +52,7 @@ public class Health : MonoBehaviour {
 
     public void Damage(float damage)
     {
-        currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP - damage, 0.0f, maxHP);
     }
 
     private void Death()

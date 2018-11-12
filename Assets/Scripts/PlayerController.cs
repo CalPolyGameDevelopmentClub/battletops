@@ -4,44 +4,111 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public AGun[] guns;
-    public string[] gunTriggers;
+    public GameObject[] holsters;
+    public int holsterToReplace;
+    private AGun[] guns;
+    private AGun jumpGun;
+    private bool inAir = false;
+    private float baseY;
+    private float initJumpForce = 1.0f;
+
+    // Controls:
+    public string fire;
+    public string jump;
+    public string spin;
+
+    public string horizMove;
+    public string vertMove;
     public int playerNum = 1;
 
-    public GameObject forwardGunR;
-    public GameObject forwardGunL;
-    public GameObject jumpGun;
+    public GameObject player;
 
-    public GameObject gunSwitch;
-
+    public float accelSpeed = 5.0f;
+    private float maxMag = 1.0f;
+    private Rigidbody rb;
 
     // Use this for initialization
     void Start () {
-        for (int t = 0; t < gunTriggers.Length; t++) {
-            gunTriggers[t] = playerNum + gunTriggers[t];
+        //Controls
+        fire = playerNum + fire;
+        jump = playerNum + jump;
+        spin = playerNum + spin;
+        horizMove = playerNum + horizMove;
+        vertMove = playerNum + vertMove;
+
+        //Init
+        guns = new AGun[holsters.Length - 1];
+        for (int h = 0; h < holsters.Length - 1; h++) {
+            guns[h] = holsters[h].GetComponent<AGun>();
         }
+        jumpGun = holsters[holsters.Length - 1].GetComponent<AGun>();
+        holsterToReplace = 0;
+
+        rb = GetComponent<Rigidbody>();
+        baseY = transform.position.y;
 	}
 
     private void FixedUpdate() {
-        int trig = 0;
-        foreach (AGun gun in guns) {
-            if (Input.GetAxis(gunTriggers[trig]) > 0.1f && gun.CanFire()) {
-                gun.Fire();
+        //Fire: 
+        if (Input.GetAxis(fire) > 0.1f) {
+            foreach (AGun gun in guns) {                
+                if (gun.CanFire()) {
+                    gun.Fire();
+                }
             }
-            ++trig;
         }
-
-        if (Input.GetAxis("TFire1") > 0.0f) {
-            attachNewGuns(gunSwitch, AGun.Type.FORWARD);
+        //Jump:
+        if (Input.GetAxis(jump) > 0.1f) {
+            if (!inAir) {
+                Debug.Log("JUMP!");
+                rb.AddRelativeForce(transform.up * initJumpForce, ForceMode.Impulse);
+                inAir = true;
+            }               
+            else if (jumpGun.CanFire())
+                jumpGun.Fire();
         }
+        //Spin
+        if (Input.GetAxis(spin) > 0.1f)
+            player.GetComponent<Health>().Damage(-0.5f);
 
+        //Move: 
+        float x = Input.GetAxis(horizMove);
+        float z = Input.GetAxis(vertMove);
+
+        rb.AddForce((new Vector3(x, 0, z)) * accelSpeed * maxMag, ForceMode.Acceleration);
     }
 
     // Update is called once per frame
     void Update () {
+        //Update guns
 		foreach (AGun gun in guns) {
             gun.UpdateCD();
-        } 
+        }
+        jumpGun.UpdateCD();
+
+        float dist = 1.0f;
+        RaycastHit hit;
+        Vector3 dir = new Vector3(0, -1, 0);
+        //edit: to draw ray also//
+        Debug.DrawRay(transform.position, dir * dist, Color.green);
+        //end edit//
+        if (Physics.Raycast(transform.position, dir, out hit, dist)) {
+            inAir = false;
+        } else {
+            //Should never happen!!
+            inAir = true;
+        }
+
+        // Update movement
+        maxMag = Mathf.Sqrt(player.GetComponent<Health>().currentHP / 10.0f) + 1.5f;
+
+        Debug.Log("test: " + maxMag);
+
+        Vector2 normVec2 = new Vector2(rb.velocity.x, rb.velocity.z);
+        float mag = normVec2.magnitude;
+        normVec2.Normalize();
+        normVec2 = normVec2 * maxMag;
+        rb.velocity = mag > maxMag ? new Vector3(normVec2.x, rb.velocity.y, normVec2.y) : rb.velocity;
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -53,29 +120,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void attachNewGuns(GameObject prefab, AGun.Type type=AGun.Type.FORWARD) {
+    private void attachNewGuns(ScriptableGun scrGun, int type=0) {
         switch(type) {
-            case AGun.Type.FORWARD:
-                Destroy(guns[0].gameObject, 0.2f);
-                Destroy(guns[1].gameObject, 0.2f);
-
-                prefab.GetComponent<ForwardGun>().fireLoc = forwardGunL;
-                GameObject gunF = Instantiate(prefab, this.gameObject.transform);
-                guns[0] = gunF.GetComponent<AGun>();
-
-                prefab.GetComponent<ForwardGun>().fireLoc = forwardGunR;
-                gunF = Instantiate(prefab, this.gameObject.transform);
-                guns[1] = gunF.GetComponent<AGun>();
-
-                break;
-
-            case AGun.Type.JUMP:
-                Destroy(guns[2].gameObject, 0.2f);
-
-                prefab.GetComponent<JumpGun>().fireLoc = this.gameObject;
-                GameObject gunJ = Instantiate(prefab, this.gameObject.transform);
-                guns[2] = gunJ.GetComponent<AGun>();
-
+            case 0:
+                holsters[holsterToReplace].GetComponent<GunController>().gun = scrGun;
+                holsterToReplace = (holsterToReplace + 1) % holsters.Length;
                 break;
 
             default: break;
