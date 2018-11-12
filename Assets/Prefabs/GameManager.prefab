@@ -376,9 +376,9 @@ MonoBehaviour:
   pickups:
   - {fileID: 1780908369931330, guid: 0da7bc15ba1b30448930e9c1f2e17c7e, type: 2}
   - {fileID: 1523045964650228, guid: d908e84c5631e8140b8c4576dd6250c9, type: 2}
-  spawnInterval: 10
+  spawnInterval: 30
   spawnDistance: 7.5
-  spawnTime: 0
+  spawnTime: 3
 --- !u!114 &114686057363519632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,3 +398,4 @@ MonoBehaviour:
   - {fileID: 1243600265589714}
   - {fileID: 1399950198174112}
   startButton: start
+  spawnDelay: 3

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,23 +37,22 @@ public class Health : MonoBehaviour {
         }
     }
 
-    //private void Update()
-    //{
-    //    if (currentHP < maxHP) { damageImage.color = flashCol; }
-    //    else
-    //    {
-    //        damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-    //    }
-    //}
-
-    public void Damage(float damage)
+    private void Update()
     {
-        currentHP -= damage;
-
         if (currentHP <= 0.0f)
         {
             Death();
         }
+        //if (currentHP < maxHP) { damageImage.color = flashCol; }
+        //else
+        //{
+        //    damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        //}
+    }
+
+    public void Damage(float damage)
+    {
+        currentHP -= damage;
     }
 
     private void Death()
@@ -66,6 +66,17 @@ public class Health : MonoBehaviour {
         playerAudio.PlayOneShot(deathClip);
         //Particles();
 
+        NotifyGM();
+
         if (currentLives <= 0) Destroy(gameObject);
+    }
+
+    private void NotifyGM()
+    {
+        GameManager gm = FindObjectOfType<GameManager>();
+
+        PlayerController pc = gameObject.GetComponent<PlayerController>();
+
+        gm.PlayerDeath(pc.playerNum);
     }
 }

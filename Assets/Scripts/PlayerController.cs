@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public AGun[] guns;
     public string[] gunTriggers;
-    public string playerNum = "1";    
+    public int playerNum = 1;
 
     public GameObject forwardGunR;
     public GameObject forwardGunL;
