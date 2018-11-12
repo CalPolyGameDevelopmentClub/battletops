@@ -13,11 +13,10 @@ public class GunController : AGun {
     private static float SPWNDIS = 0.25f;
 
     private float fireTime;
-    private float fireRate;
 
 
     public override bool CanFire() {
-        return pHealth.currentHP >= gun.Cost * leeway && fireTime == fireRate;
+        return gun != null && pHealth.currentHP >= gun.Cost * leeway && fireTime == gun.FireRate;
     }
 
     public override void Fire() {
@@ -34,7 +33,6 @@ public class GunController : AGun {
         pHealth = player.GetComponent<Health>();
 
         fireTime = 0.0f;
-        fireRate = gun.FireRate;
 	}
 
     private void FireBullet() {
@@ -56,6 +54,7 @@ public class GunController : AGun {
     }
 
     private void Timers() {
-        fireTime = fireTime < fireRate ? fireTime + Time.deltaTime : fireRate;        
+        if (gun != null)
+            fireTime = fireTime < gun.FireRate ? fireTime + Time.deltaTime : gun.FireRate;        
     }
 }

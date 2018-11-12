@@ -17,16 +17,16 @@ MonoBehaviour:
   Jumpforce: 2.5
   JumpforceType: 1
   bulletDir:
-  - {x: 0, y: 60, z: 0}
   - {x: 0, y: 30, z: 0}
+  - {x: 0, y: 20, z: 0}
   - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -15, z: 0}
   - {x: 0, y: -30, z: 0}
-  - {x: 0, y: 60, z: 0}
   bulletPos:
   - {x: 0.66, y: 0, z: 0}
   - {x: 0.33, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: -33, y: 0, z: 0}
+  - {x: -0.33, y: 0, z: 0}
   - {x: -0.66, y: 0, z: 0}
   BulletPrefab: {fileID: 1174771670483096, guid: ff9a18d488452ce408284ee5dfa6301f,
     type: 2}
