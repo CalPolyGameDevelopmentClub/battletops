@@ -11,7 +11,7 @@ public class Health : MonoBehaviour {
     public int currentLives;
     public float maxHP;
     public float currentHP;
-    private float startHP;
+    public float startHP;
 
     public Slider healthSlider;
     public Image damageImage;
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour {
     public float flashSpeed = 5f;
     public Color flashCol = new Color(1f, 0f, 0f, 0.1f); // Match to player color
 
-    AudioSource playerAudio;
+    public AudioSource playerAudio;
     public AudioClip damageClip, deathClip;
 
     private void Awake()
@@ -37,6 +37,10 @@ public class Health : MonoBehaviour {
         {
             stock[i].enabled = true;
         }
+        
+    }
+
+    private void Start() {
         startHP = currentHP;
     }
 
@@ -55,6 +59,9 @@ public class Health : MonoBehaviour {
 
     public void Damage(float damage)
     {
+        if (damage > 0.0f)
+            playerAudio.PlayOneShot(damageClip);
+
         if (currentHP < damage) {
             currentHP = 0;
         }
@@ -70,13 +77,12 @@ public class Health : MonoBehaviour {
     private void Death()
     {
         //currentLives--;
-        this.gameObject.SetActive(false);
-        
-        playerAudio.PlayOneShot(deathClip);
+                
         //Particles
         if (deathParticle != null)
             deathParticle.Emit(1);
 
+        this.gameObject.SetActive(false);
         NotifyGM();
 
         //if (currentLives <= 0) Destroy(gameObject);
@@ -85,6 +91,7 @@ public class Health : MonoBehaviour {
     private void NotifyGM()
     {
         GameManager gm = FindObjectOfType<GameManager>();
+        gm.GetComponent<AudioSource>().PlayOneShot(deathClip);
 
         PlayerController pc = gameObject.GetComponent<PlayerController>();
 
