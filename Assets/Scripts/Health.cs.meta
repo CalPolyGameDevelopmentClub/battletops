@@ -3,7 +3,11 @@ guid: cea8ccdeee3659a44ac5fc919f36bde5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthSlider: {instanceID: 0}
+  - damageImage: {instanceID: 0}
+  - damageClip: {fileID: 8300000, guid: ee4c796670dcae34892870a9ae3bec0b, type: 3}
+  - deathClip: {fileID: 8300000, guid: 69fc73a7ef7cdb448a122c5a606e3a43, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

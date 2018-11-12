@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -409,6 +409,7 @@ MonoBehaviour:
   band: 2
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &89612733
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +812,7 @@ MonoBehaviour:
   band: 3
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &190569929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1913,7 @@ MonoBehaviour:
   band: 4
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &547895494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,6 +2491,7 @@ MonoBehaviour:
   band: 5
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &763256642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3017,7 +3021,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 92bc92728fd86114c86bc8f74a118cac, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a37849ecec550134ca66079b5ef38531, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3282,6 +3286,7 @@ MonoBehaviour:
   band: 6
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &895015989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,6 +3871,7 @@ MonoBehaviour:
   band: 7
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &1089265305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 424871f8d0b2c4b42a1890cb2e9696dd,
@@ -3890,6 +3896,7 @@ MonoBehaviour:
   band: 1
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &1093508353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,6 +3953,7 @@ MonoBehaviour:
   band: 0
   startScale: 1
   scaleMult: 10
+  useBuffer: 1
 --- !u!1 &1165831380
 GameObject:
   m_ObjectHideFlags: 0
